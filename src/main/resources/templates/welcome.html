@@ -1,0 +1,44 @@
+<!DocType html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" content="text/html">
+        <title>TODO App</title>
+        <link href="../static/css/welcome.css" rel="stylesheet">
+        <!-- <script src="../static/js/welcome.js"></script> -->
+    </head>
+    <body>
+        <div>
+            <div>
+                <!-- menu bar -->
+            </div>
+            <div class="todo-list-header">
+                <h1>What do you want to get down today?</h3>
+                <input type="text" id="taskInput" placeholder="+ Add a new task..." onkeydown="createTask()">
+            </div>
+            <section>
+                <ul>
+                    <li >
+                        <input type="checkbox">
+                        <label></label>
+                    </li>
+                </ul>
+                <!-- <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Description</th>
+                            <th>Completed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="todo: ${todoItems}">
+                            <td th:text="${todo.id}">Id</td>
+                            <td th:text="${todo.description}">Description</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table> -->
+            </section>
+        </div>
+    </body>
+</html>

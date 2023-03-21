@@ -2,37 +2,26 @@ package com.chinghan.springboottodo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.chinghan.springboottodo.models.TodoItem;
-import com.chinghan.springboottodo.repositories.TodoItemRepository;
+import com.chinghan.springboottodo.services.TodoItemService;
 
 @Controller
 public class PageController {
 
     @Autowired
-    private TodoItemRepository todoItemRepository;
+    private TodoItemService todoItemService;
 
     // @Autowired
-    // private TodoListRepository todoListRepository;
+    // private TodoListService todoListService;
 
     @GetMapping("/")
-    public String getWelcome(Model model) {
-        
-        // TodoList todoList = new TodoList();
-        // TodoItem todoItem = new TodoItem();
-
-        // todoItem.setTodoList(todoList);
-        // todoItem.setCompleted(false);
-        // todoItem.setDescription("Clean Code Chap 1");
-
-        // todoListRepository.save(todoList);
-        // todoItemRepository.save(todoItem);
-
-        Iterable<TodoItem> todoItems = todoItemRepository.findAll();
-        model.addAttribute("todoItems", todoItems);
-
-        return "welcome";
+    public ModelAndView index() {
+        ModelAndView modelAndView = new ModelAndView("welcome");
+        modelAndView.addObject("todoItems", todoItemService.getAll());
+        return modelAndView;
     }
+
+
 }

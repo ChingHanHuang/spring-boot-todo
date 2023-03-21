@@ -3,42 +3,54 @@
     <head>
         <meta charset="utf-8" content="text/html">
         <title>TODO App</title>
-        <link href="../static/css/welcome.css" rel="stylesheet">
-        <!-- <script src="../static/js/welcome.js"></script> -->
+        <link th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}" th:rel="stylesheet">
     </head>
     <body>
-        <div>
-            <div>
-                <!-- menu bar -->
-            </div>
-            <div class="todo-list-header">
-                <h1>What do you want to get down today?</h3>
-                <input type="text" id="taskInput" placeholder="+ Add a new task..." onkeydown="createTask()">
-            </div>
-            <section>
-                <ul>
-                    <li >
-                        <input type="checkbox">
-                        <label></label>
-                    </li>
-                </ul>
-                <!-- <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Description</th>
-                            <th>Completed</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="todo: ${todoItems}">
-                            <td th:text="${todo.id}">Id</td>
-                            <td th:text="${todo.description}">Description</td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table> -->
-            </section>
+        <div class="container">
+            <h1>Spring Boot Todo App</h1>
+            <hr/>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>Id</th>
+                        <th>Description</th>
+                        <th>Is Completed</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${todoItems}">
+                        <td>
+                            <div>
+                                <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">
+                                    <i class="bi bi-pencil-fill"></i> Edit
+                                </a>
+                                <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">
+                                    <i class="bi bi-trash-fill"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                        <td th:text="${item.id}"></td>
+                        <td th:text="${item.description}"></td>
+                        <td>
+                            <span th:if="${item.isCompleted} == true" th:text="Yes"></span>
+                            <span th:unless="${item.isCompleted} == true" th:text="No"></span>
+                        </td>
+                        <td th:text="${item.createdTime}"></td>
+                        <td th:text="${item.modifiedTime}"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                <a class="btn btn-outline-success" href="/create-todo">
+                    <i class="bi bi-plus-square-fill"></i> Create a Todo
+                </a>
+            </p>
         </div>
+        <script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script>
     </body>
 </html>

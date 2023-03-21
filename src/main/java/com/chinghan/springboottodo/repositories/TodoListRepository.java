@@ -1,9 +1,11 @@
-package com.chinghan.springboottodo.repositories;
+// package com.chinghan.springboottodo.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.stereotype.Repository;
 
-import com.chinghan.springboottodo.models.TodoList;
+// import com.chinghan.springboottodo.models.TodoList;
 
-public interface TodoListRepository extends JpaRepository<TodoList, Long> {
+// @Repository
+// public interface TodoListRepository extends JpaRepository<TodoList, Long> {
     
-}
+// }
